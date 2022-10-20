@@ -17,6 +17,7 @@ import { CMS_NAME } from '../../lib/constants'
 export default function Post({ post, posts, preview }) {
   const router = useRouter()
   const morePosts = posts?.edges
+  const postTitle = `${post.title} | Next.js Blog Example with ${CMS_NAME}`
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -32,9 +33,7 @@ export default function Post({ post, posts, preview }) {
           <>
             <article>
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
+                <title>{postTitle}</title>
                 <meta
                   property="og:image"
                   content={post.featuredImage?.node.sourceUrl}
